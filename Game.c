@@ -269,7 +269,7 @@ void DealerHit(int* deck, int* dealer_hand, int sum_dealer, int sum_player, int 
     if (sum_dealer > 21) {
 
         printf("Dealer busts! You win.\n\n");
-        money = money + (bet*2);
+        (*money) = (*money) + (bet*2);
 
     }
 
