@@ -32,7 +32,7 @@ void Start(bool* in_play) {
 
         else if (toupper(input) == 'Y') {
 
-            in_play = true;
+            (*in_play) = true;
             fflush(stdin);
 
         }
@@ -54,7 +54,7 @@ void SetBet(int* bet, int* money) {
     printf("Make your wager: ");
     scanf("%i", &input);
 
-    *bet = input;
+    (*bet) = input;
 
     fflush(stdin);
 
@@ -99,9 +99,10 @@ int FindHandTotal(int hand[], int hand_count) {
     for (i = 0; i < hand_count ; i++) {
         if (hand[i] % 13 == 12) {
             num_aces++;
-            if (sum + (hand[i] % 13) < 22)
-            sum = sum + 11;
-            else if (sum + (hand[i] % 13) > 21) {
+            if (sum + (hand[i] % 13) < 22) {
+                sum = sum + 11;
+            }
+            else {
                 sum = sum + 1;
             }
         }
@@ -293,7 +294,7 @@ void DealerHit(int* deck, int* dealer_hand, int sum_dealer, int sum_player, int 
     if (sum_dealer < sum_player) {
 
         printf("You win!\n\n");
-        money = money + (bet*2);
+        (*money) = (*money) + (bet*2);
 
     }
 }
